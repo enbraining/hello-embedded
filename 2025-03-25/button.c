@@ -4,7 +4,7 @@
 int main()
 {
 	const int button_pin = 3;
-	const int led_pin = 1;
+	const int led_pin = 0;
 
 	wiringPiSetup();
 
@@ -14,7 +14,7 @@ int main()
 
 	while(1)
 	{	
-		if(digitalRead(button_pin) == HIGH)
+		while(digitalRead(button_pin) == HIGH)
 		{
 			digitalWrite(led_pin, HIGH);
 		}
