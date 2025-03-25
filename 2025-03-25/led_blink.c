@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <wiringPi.h>
 
+void toggleLed(int index);
+
 int main()
 {
         int led_1 = 0, led_2 = 1, led_3 = 2;
+	int index = 0;
 
         wiringPiSetup();
 
@@ -13,11 +16,17 @@ int main()
 
         while(1)
         {
-                digitalWrite(led_1, HIGH);
-                digitalWrite(led_2, LOW);
+		if(index >= 3) index = 0;
+                toggleLed(index++);
                 delayMicroseconds(100000);
-                digitalWrite(led_1, LOW);
-                digitalWrite(led_2, HIGH);
-                delayMicroseconds(100000);
+        }
+}
+
+void toggleLed(int index)
+{
+        for(int i = 0; i <= 2; i++)
+        {
+                if(i == index) digitalWrite(i, HIGH);
+                else digitalWrite(i, LOW);
         }
 }
