@@ -6,8 +6,6 @@
 
 int main()
 {
-  printf("Raspberry Pi blink\n");
- 
   volatile int is_toggle = 0;
   
   wiringPiSetup();
@@ -17,13 +15,12 @@ int main()
   
   while(1)
   {
-      if(digitalRead(BUTTON) == LOW){
+      while(digitalRead(BUTTON) == LOW){
         is_toggle = !is_toggle;
-        delay(500);
+        while(digitalRead(BUTTON) == LOW);
       } 
               
-      if(is_toggle) digitalWrite(LED, HIGH);
-      else digitalWrite(LED, LOW);
+      digitalWrite(LED, is_toggle);
   }
   
   return 0;
