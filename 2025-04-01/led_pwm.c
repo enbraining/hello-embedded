@@ -16,8 +16,11 @@ int main()
     softPwmWrite(2, light);
     delay(50);
     
-    if(count < 100) light--;
-    else if(count >= 100) light--;
+    if(count < 100)
+    {
+        light++;
+        count++;
+    } else if(count >= 100) light--;
 
     if(light == 0)
     {
