@@ -15,9 +15,7 @@ int main()
 	TIMSK |= (1 << OCIE0) | (1 << TOIE0);
 	OCR0 = 128;
 	
-	// 부저에서 나오는 전압
-	
-	                                                                                     
+	// 부저에서 나오는 전압                                                                             
 	while(1)
 	{
 		PORTA = 0xff;
